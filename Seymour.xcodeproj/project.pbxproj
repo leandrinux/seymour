@@ -15,7 +15,6 @@
 		83B9EA931C6F6A18006951D5 /* SeymourTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B9EA921C6F6A18006951D5 /* SeymourTests.swift */; };
 		83B9EA9E1C6F6A18006951D5 /* SeymourUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B9EA9D1C6F6A18006951D5 /* SeymourUITests.swift */; };
 		83B9EAAC1C6F6A8F006951D5 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83B9EAAB1C6F6A8F006951D5 /* CoreBluetooth.framework */; };
-		83B9EAAE1C6F6A9D006951D5 /* Seymour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B9EAAD1C6F6A9D006951D5 /* Seymour.swift */; };
 		83B9EAB01C6F83E1006951D5 /* Plant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B9EAAF1C6F83E1006951D5 /* Plant.swift */; };
 		83B9EAB21C6F87BA006951D5 /* PlantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B9EAB11C6F87BA006951D5 /* PlantCell.swift */; };
 		83B9EAB41C6F8A64006951D5 /* PlantVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B9EAB31C6F8A64006951D5 /* PlantVC.swift */; };
@@ -53,7 +52,6 @@
 		83B9EA9D1C6F6A18006951D5 /* SeymourUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeymourUITests.swift; sourceTree = "<group>"; };
 		83B9EA9F1C6F6A18006951D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		83B9EAAB1C6F6A8F006951D5 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
-		83B9EAAD1C6F6A9D006951D5 /* Seymour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Seymour.swift; sourceTree = "<group>"; };
 		83B9EAAF1C6F83E1006951D5 /* Plant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plant.swift; sourceTree = "<group>"; };
 		83B9EAB11C6F87BA006951D5 /* PlantCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlantCell.swift; sourceTree = "<group>"; };
 		83B9EAB31C6F8A64006951D5 /* PlantVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlantVC.swift; sourceTree = "<group>"; };
@@ -111,14 +109,13 @@
 			children = (
 				83B9EA7D1C6F6A18006951D5 /* AppDelegate.swift */,
 				83B9EA7F1C6F6A18006951D5 /* PlantsVC.swift */,
+				83B9EAB31C6F8A64006951D5 /* PlantVC.swift */,
 				83B9EA811C6F6A18006951D5 /* Main.storyboard */,
 				83B9EA841C6F6A18006951D5 /* Assets.xcassets */,
 				83B9EA861C6F6A18006951D5 /* LaunchScreen.storyboard */,
 				83B9EA891C6F6A18006951D5 /* Info.plist */,
-				83B9EAAD1C6F6A9D006951D5 /* Seymour.swift */,
 				83B9EAAF1C6F83E1006951D5 /* Plant.swift */,
 				83B9EAB11C6F87BA006951D5 /* PlantCell.swift */,
-				83B9EAB31C6F8A64006951D5 /* PlantVC.swift */,
 			);
 			path = Seymour;
 			sourceTree = "<group>";
@@ -277,7 +274,6 @@
 				83B9EAB41C6F8A64006951D5 /* PlantVC.swift in Sources */,
 				83B9EAB01C6F83E1006951D5 /* Plant.swift in Sources */,
 				83B9EA7E1C6F6A18006951D5 /* AppDelegate.swift in Sources */,
-				83B9EAAE1C6F6A9D006951D5 /* Seymour.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

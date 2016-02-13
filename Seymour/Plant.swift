@@ -18,7 +18,7 @@ class Plant
 {
     let name    : String
     let image   : UIImage?
-    var device  : CBPeripheral?
+    var peripheral  : CBPeripheral?
     
     init(name: String, image: UIImage? = nil) {
         self.name = name
