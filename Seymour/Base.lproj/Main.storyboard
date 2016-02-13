@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Plantas-->
@@ -77,34 +78,47 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zGw-sM-xsh">
-                                <rect key="frame" x="96" y="100" width="128" height="128"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZU7-7A-EnC" customClass="LvRadialProgressView" customModule="Seymour" customModuleProvider="target">
+                                <rect key="frame" x="32" y="87" width="256" height="256"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zGw-sM-xsh">
+                                        <rect key="frame" x="13" y="13" width="230" height="230"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="230" id="1iH-rM-gW8"/>
+                                            <constraint firstAttribute="width" secondItem="zGw-sM-xsh" secondAttribute="height" multiplier="1:1" id="kUY-oM-hrX"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="128" id="1iH-rM-gW8"/>
-                                    <constraint firstAttribute="height" constant="128" id="Ruj-EV-yDi"/>
+                                    <constraint firstItem="zGw-sM-xsh" firstAttribute="centerY" secondItem="ZU7-7A-EnC" secondAttribute="centerY" id="Aay-bj-5bO"/>
+                                    <constraint firstItem="zGw-sM-xsh" firstAttribute="centerX" secondItem="ZU7-7A-EnC" secondAttribute="centerX" id="GF7-B7-qjJ"/>
+                                    <constraint firstAttribute="width" secondItem="ZU7-7A-EnC" secondAttribute="height" multiplier="1:1" id="WFb-9w-q9Q"/>
+                                    <constraint firstAttribute="width" constant="256" id="vxe-gY-RDm"/>
                                 </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JAI-QC-VXf">
-                                <rect key="frame" x="125" y="258" width="71" height="35"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JAI-QC-VXf">
+                                <rect key="frame" x="104" y="386" width="113" height="57"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="48"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="JAI-QC-VXf" firstAttribute="top" secondItem="zGw-sM-xsh" secondAttribute="bottom" constant="30" id="6MX-8g-hns"/>
-                            <constraint firstItem="zGw-sM-xsh" firstAttribute="centerX" secondItem="88f-qv-ODf" secondAttribute="centerX" id="8Kc-HT-c1v"/>
+                            <constraint firstItem="ZU7-7A-EnC" firstAttribute="centerX" secondItem="88f-qv-ODf" secondAttribute="centerX" id="6vL-hb-RH6"/>
                             <constraint firstItem="JAI-QC-VXf" firstAttribute="centerX" secondItem="88f-qv-ODf" secondAttribute="centerX" id="M6w-Wn-XE7"/>
+                            <constraint firstItem="ZU7-7A-EnC" firstAttribute="top" secondItem="ct3-ek-1tU" secondAttribute="bottom" constant="23" id="Rgi-Zr-4di"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="JAI-QC-VXf" secondAttribute="trailing" constant="20" id="SQh-V1-hOI"/>
                             <constraint firstItem="JAI-QC-VXf" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="88f-qv-ODf" secondAttribute="leading" constant="20" id="Sj5-Be-iIX"/>
-                            <constraint firstItem="zGw-sM-xsh" firstAttribute="top" secondItem="ct3-ek-1tU" secondAttribute="bottom" constant="36" id="WCT-V8-Kr5"/>
+                            <constraint firstItem="JAI-QC-VXf" firstAttribute="top" secondItem="ZU7-7A-EnC" secondAttribute="bottom" constant="43" id="ZaI-H6-rqk"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="QCE-Xu-EkZ"/>
                     <connections>
                         <outlet property="icon" destination="zGw-sM-xsh" id="ODo-EO-UGM"/>
                         <outlet property="message" destination="JAI-QC-VXf" id="Mqb-03-drP"/>
+                        <outlet property="radialProgressView" destination="ZU7-7A-EnC" id="I3F-76-FVw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mSl-cV-dqX" userLabel="First Responder" sceneMemberID="firstResponder"/>
