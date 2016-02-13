@@ -29,18 +29,17 @@ class Seymour : NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
         central = CBCentralManager(delegate: self, queue: nil, options: nil)
     }
     
-//    private func writeValue(device: CBPeripheral, value: String)
-//    {
-//        if let data = (value as NSString).dataUsingEncoding(NSUTF8StringEncoding),
-//            let peripheralDevice = peripheralDevice,
-//            let deviceCharacteristics = deviceCharacteristics
+    private func writeValue(device: CBPeripheral, value: String)
+    {
+//        if let data = (value as NSString).dataUsingEncoding(NSUTF8StringEncoding)
 //        {
-//            peripheralDevice.writeValue(data,
+//            
+//            device.writeValue(data,
 //                forCharacteristic: deviceCharacteristics,
 //                type: CBCharacteristicWriteType.WithoutResponse
 //                )
 //        }
-//    }
+    }
     
     // MARK: CBCentralManagerDelegate
     
@@ -61,20 +60,57 @@ class Seymour : NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
         advertisementData: [String : AnyObject],
         RSSI: NSNumber)
     {
-        print("Found \(peripheral.name)")
         if let name = peripheral.name where name == "HMSensor" {
-            print("Found HMSensor! \(peripheral) \nRSSI: \(RSSI)");
-            if let plant = knownPlants[peripheral.identifier.UUIDString] {
-                plant.device = peripheral
-                self._plants.append(plant)
-                delegate?.didFindPlant(plant)
-            } else {
-                print("I don't know this plant")
+            if let plant = knownPlants[peripheral.identifier.UUIDString]
+            {
+                let index = self._plants.indexOf({ (plant) -> Bool in
+                    return plant === plant
+                })
+                
+                if index == nil {
+                    plant.device = peripheral
+                    self._plants.append(plant)
+                    delegate?.didFindPlant(plant)
+                    
+                    print("Connecting to \(peripheral)")
+                    self.central.connectPeripheral(peripheral, options: nil)
+                }
+                
+            }
+        }
+    }
+
+    func centralManager(central: CBCentralManager,
+        didConnectPeripheral peripheral: CBPeripheral)
+    {
+        peripheral.delegate = self
+        print("Discovering services of \(peripheral)")
+        peripheral.discoverServices(nil)
+    }
+    
+    // MARK: CBPeripheralDelegate
+    
+    func peripheral(peripheral: CBPeripheral, didDiscoverServices error: NSError?)
+    {
+        if let services = peripheral.services {
+            for service in services {
+                print("Discovering characteristics of \(peripheral)")
+                peripheral.discoverCharacteristics(nil, forService: service)
             }
         }
     }
     
-    // MARK: CBPeripheralDelegate
+    func peripheral(peripheral: CBPeripheral, didDiscoverCharacteristicsForService service: CBService, error: NSError?)
+    {
+        print("Discovered characteristics \(service.characteristics)")
+        if let characteristics = service.characteristics
+        {
+            for characteristic in characteristics {
+                peripheral.readValueForCharacteristic(characteristic)
+                peripheral.setNotifyValue(true, forCharacteristic: characteristic)
+            }
+        }
+    }
     
     func peripheral(peripheral: CBPeripheral, didUpdateValueForCharacteristic characteristic: CBCharacteristic, error: NSError?) {
         if let characteristicValue = characteristic.value {
@@ -84,5 +120,5 @@ class Seymour : NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
             }
         }
     }
-    
+
 }
